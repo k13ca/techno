@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Stint+Ultra+Expanded&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Stalinist+One&display=swap");
+
+html {
+  --beige: beige;
+  --bright: rgba(214, 155, 155, 0.432);
+}
+
+body {
+  box-sizing: border-box;
+  padding: 20px;
+  margin: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgb(213, 241, 254) 100%
+  );
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+section {
+  box-sizing: border-box;
+  height: calc(100vh - 40px);
+  width: calc(100vw - 40px);
+  display: flex;
+  padding: 15px;
+  border: 1px;
+  border-radius: 14px;
+  border-style: solid;
+  flex-direction: column;
+  line-height: 0%;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  height: 15vh;
+  justify-content: end;
+}
+
+.contact {
+  padding-inline: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: flex-end;
+  font-family: "Stint Ultra Expanded", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+}
+
+.address {
+  border: 1px;
+  border-radius: 24px;
+  border-style: solid;
+  padding-inline: 15px;
+  padding-block: 20px;
+}
+
+.qrimg {
+  height: 100%;
+}
+
+.midpart {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  font-family: "Fugaz One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.midleft {
+  width: 10%;
+  height: 100%;
+}
+
+.techno {
+  padding-top: 50px;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  font-size: 90px;
+}
+
+.technoimg {
+  transform: translateY(-15px);
+  width: 90%;
+}
+
+.midright {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: flex-start;
+  width: 10%;
+  height: 100%;
+  padding-top: 20px;
+  padding-right: 5px;
+}
+
+h2 {
+  writing-mode: vertical-rl;
+  line-height: 0%;
+  font-size: 28px;
+}
+
+.arrowimg {
+  height: 20%;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 20vh;
+}
+
+.bottomquote {
+  display: flex;
+  flex-wrap: wrap;
+  width: 25%;
+  height: 100%;
+  text-align: justify;
+  text-align-last: justify;
+  font-size: 2.2vh;
+  font-family: "Fugaz One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+.events {
+  box-sizing: border-box;
+  display: flex;
+  width: 65%;
+  height: 100%;
+  align-items: center;
+  overflow: hidden;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.event {
+  height: 90%;
+  min-width: 220px;
+  text-align: justify;
+  text-align-last: justify;
+  line-height: 100%;
+  word-spacing: 20px;
+  font-size: 16px;
+  font-family: "Stint Ultra Expanded", serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-right: 30px;
+  animation: loop 10s linear infinite;
+}
+
+@keyframes loop {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.note {
+  font-family: "Stalinist One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  position: absolute;
+  font-size: 15px;
+  width: 100px;
+  line-height: 150%;
+  top: 65%;
+  left: 80%;
+}
