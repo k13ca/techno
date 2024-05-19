@@ -39,27 +39,35 @@ function App() {
             anim id est.
           </span>
           <div className="events">
-            <div className="event">
+            <div className="event loop1">
               15.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
               / SOMEONE YOU WANT TO HEAR
             </div>
-            <div className="event">
+            <div className="event loop1">
               16.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
               / SOMEONE YOU WANT TO HEAR
             </div>
-            <div className="event">
+            <div className="event loop1">
               17.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
               / SOMEONE YOU WANT TO HEAR
             </div>
-            <div className="event">
+            <div className="event loop1">
+              17.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
+              / SOMEONE YOU WANT TO HEAR
+            </div>
+            <div className="event loop2">
               18.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
               / SOMEONE YOU WANT TO HEAR
             </div>
-            <div className="event">
+            <div className="event loop2">
               19.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
               / SOMEONE YOU WANT TO HEAR
             </div>
-            <div className="event">
+            <div className="event loop2">
+              20.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
+              / SOMEONE YOU WANT TO HEAR
+            </div>
+            <div className="event loop2">
               20.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
               / SOMEONE YOU WANT TO HEAR
             </div>
