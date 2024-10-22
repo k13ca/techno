@@ -4,7 +4,7 @@ import techno from "./assets/techno.png";
 import qr from "./assets/qrcode.png";
 import arrow from "./assets/arrow.png";
 
-const events = [{ date: 20.05, artists: "w" }];
+//const events = [{ date: 20.05, artists: "w" }];
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
         <div className="midpart">
           <div className="midleft"></div>
           <div className="techno">
-            KODOWICE
+            KATOWICE
             <img src={techno} className="technoimg" />
           </div>
 

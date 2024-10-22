@@ -87,6 +87,7 @@ section {
   justify-content: center;
   align-items: center;
   width: 80%;
+  max-height: 80%;
   font-size: 90px;
 }
 
@@ -166,18 +167,18 @@ h2 {
 
 .loop1 {
   display: inline-block;
-  animation: loop1 30s linear infinite;
+  animation: loop1 10s linear infinite;
 }
 
 .loop2 {
   display: inline-block;
-  animation: loop2 30s linear infinite;
-  animation-delay: 15s;
+  animation: loop2 10s linear infinite;
+  animation-delay: 5s;
 }
 
 @keyframes loop1 {
   0% {
-    transform: translateX(375%);
+    transform: translateX(380%);
   }
   100% {
     transform: translateX(-450%);
@@ -189,7 +190,7 @@ h2 {
     transform: translateX(-38%);
   }
   100% {
-    transform: translateX(-863%);
+    transform: translateX(-868%);
   }
 }
 
