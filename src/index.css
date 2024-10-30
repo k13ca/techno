@@ -32,34 +32,96 @@ section {
   border-style: solid;
   flex-direction: column;
   line-height: 0%;
+  justify-content: space-between;
 }
 
-.header {
-  display: flex;
-  width: 100%;
-  height: 15vh;
-  justify-content: end;
+a {
+  all: unset;
 }
 
-.contact {
-  padding-inline: 10px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-  align-items: flex-end;
+.cls-1 {
+  fill: none;
+  stroke: #000;
+  stroke-miterlimit: 10;
+}
+
+#lodge1 .cls-1 {
+  fill: aquamarine;
+}
+
+#lodge2 .cls-1 {
+  fill: aquamarine;
+}
+
+.fill {
+  fill: lightblue;
+}
+
+h1 {
+  font-size: 90px;
+  margin: 0;
+  font-family: "Fugaz One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h2 {
+  font-size: 28px;
+  margin: 0;
+  font-family: "Fugaz One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+h3 {
   font-family: "Stint Ultra Expanded", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+}
+
+h4 {
+  font-family: "Stalinist One", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 15px;
 }
 
-.address {
+.pointer {
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  max-height: 15vh;
+  justify-content: space-between;
+}
+
+.merge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.outline {
   border: 1px;
   border-radius: 24px;
   border-style: solid;
   padding-inline: 15px;
-  padding-block: 20px;
+  padding-block: 15px;
+  text-wrap: nowrap;
+  background-color: rgb(0, 0, 0, 0);
 }
 
 .qrimg {
@@ -70,14 +132,66 @@ section {
   width: 100%;
   height: 60vh;
   display: flex;
-  font-family: "Fugaz One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+}
+
+.midpart h1 {
+  animation: light 10s infinite;
+}
+
+@keyframes light {
+  0% {
+    filter: drop-shadow(0px 0px 6px rgba(19, 43, 255, 0));
+  }
+  10% {
+    filter: drop-shadow(0px 0px 6px rgb(48, 68, 255));
+  }
+  30% {
+    filter: drop-shadow(0px 0px 6px rgba(19, 43, 255, 0));
+  }
+  50% {
+    filter: drop-shadow(0px 0px 6px rgb(48, 68, 255));
+  }
+  60% {
+    filter: drop-shadow(0px 0px 6px rgba(19, 43, 255, 0));
+  }
+  65% {
+    filter: drop-shadow(0px 0px 6px rgb(48, 68, 255));
+  }
+  68% {
+    filter: drop-shadow(0px 0px 6px rgba(19, 43, 255, 0));
+  }
+  71% {
+    filter: drop-shadow(0px 0px 6px rgb(48, 68, 255));
+  }
+  72% {
+    filter: drop-shadow(0px 0px 6px rgba(19, 43, 255, 0));
+  }
+  80% {
+    filter: drop-shadow(0px 0px 6px rgb(48, 68, 255));
+  }
+  90% {
+    filter: drop-shadow(0px 0px 6px rgba(19, 43, 255, 0));
+  }
 }
 
 .midleft {
   width: 10%;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  gap: 30px;
+  line-height: normal;
+  text-wrap: nowrap;
+}
+
+.rotate-left {
+  transform: rotate(-180deg);
+}
+
+.rotate-right {
+  transform: rotate(180deg);
 }
 
 .techno {
@@ -88,12 +202,12 @@ section {
   align-items: center;
   width: 80%;
   max-height: 80%;
-  font-size: 90px;
 }
 
 .technoimg {
   transform: translateY(-15px);
   width: 90%;
+  filter: drop-shadow(10px 10px 8px rgba(53, 61, 130, 0.2));
 }
 
 .midright {
@@ -106,12 +220,6 @@ section {
   height: 100%;
   padding-top: 20px;
   padding-right: 5px;
-}
-
-h2 {
-  writing-mode: vertical-rl;
-  line-height: 0%;
-  font-size: 28px;
 }
 
 .arrowimg {
@@ -146,7 +254,7 @@ h2 {
   display: flex;
   max-width: 63%;
   height: 100%;
-  align-items: flex-end;
+  align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
 }
@@ -158,10 +266,6 @@ h2 {
   text-align-last: justify;
   line-height: 100%;
   word-spacing: 20px;
-  font-size: 16px;
-  font-family: "Stint Ultra Expanded", serif;
-  font-weight: 400;
-  font-style: normal;
   margin-right: 30px;
 }
 
@@ -213,15 +317,12 @@ h2 {
 } */
 
 .note {
-  font-family: "Stalinist One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
   position: absolute;
-  font-size: 15px;
   width: 100px;
   line-height: 150%;
-  top: 70%;
+  top: 67%;
   left: 82%;
+  cursor: none;
 }
 
 .contact:hover,
@@ -229,8 +330,8 @@ h2 {
 .qrimg:hover,
 .arrowimg:hover,
 h2:hover,
-.bottomquote:hover,
-.note:hover {
+h4:hover,
+.bottomquote:hover {
   animation: hover 1s ease-in-out;
 }
 
@@ -251,4 +352,18 @@ h2:hover,
     transform: translateX(0px);
     transform: translateY(0px);
   }
+}
+
+/* ---------------------RESERVATION---------------------- */
+
+.flors {
+  display: flex;
+  flex-direction: row;
+  max-height: 80%;
+  justify-content: space-between;
+  align-items: start;
+}
+
+svg {
+  max-height: 100%;
 }
