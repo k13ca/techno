@@ -316,45 +316,45 @@ export function Flor2() {
 
 export function Box1() {
   return (
-    <g id="box1" onClick={() => console.log("vgbhjkl")}>
+    <g id="box1" className="seating" onClick={() => console.log("vgbhjkl")}>
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m27.9,9.53h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m77.75,9.55h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m-6.71,94.54h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H-1.58c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(-85.7 121.15) rotate(-90)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m-6.68,44.7h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H-1.55c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(-35.82 71.33) rotate(-90)"
       />
-      <rect className="cls-1 fill" x="51.11" y="44" width="75" height="84" />
+      <rect className="cls-1" x="51.11" y="44" width="75" height="84" />
     </g>
   );
 }
 
 export function SmallBox1() {
   return (
-    <g id="smallbox1">
+    <g id="smallbox1" className="seating">
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m-6.67,363.43h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H-1.54c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(-354.55 390.07) rotate(-90)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m75.33,363.47h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(472.11 272.59) rotate(90)"
       />
       <rect
-        className="cls-1 fill"
+        className="cls-1"
         x="35.26"
         y="348.35"
         width="47.85"
@@ -366,19 +366,19 @@ export function SmallBox1() {
 
 export function SmallBox2() {
   return (
-    <g id="smallbox2">
+    <g id="smallbox2" className="seating">
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m-6.82,293h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H-1.69c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(-284.27 319.49) rotate(-90)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m75.18,293.04h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(401.54 202.31) rotate(90)"
       />
       <rect
-        className="cls-1 fill"
+        className="cls-1"
         x="35.11"
         y="277.93"
         width="47.85"
@@ -390,19 +390,19 @@ export function SmallBox2() {
 
 export function SmallBox3() {
   return (
-    <g id="smallbox3">
+    <g id="smallbox3" className="seating">
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m-6.08,222.81h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H-.95c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(-213.34 250.05) rotate(-90)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m75.92,222.85h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(332.09 131.38) rotate(90)"
       />
       <rect
-        className="cls-1 fill"
+        className="cls-1"
         x="35.86"
         y="207.73"
         width="47.85"
@@ -414,18 +414,18 @@ export function SmallBox3() {
 
 export function SmallBox4() {
   return (
-    <g id="smallbox4">
+    <g id="smallbox4" className="seating">
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m166.97,298.34h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m166.92,380.34h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(382.71 778.45) rotate(180)"
       />
       <rect
-        className="cls-1 fill"
+        className="cls-1"
         x="167.61"
         y="324.82"
         width="47.85"
@@ -438,18 +438,18 @@ export function SmallBox4() {
 
 export function SmallBox5() {
   return (
-    <g id="smallbox5">
+    <g id="smallbox5" className="seating">
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m166.97,198.34h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m166.92,280.34h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(382.71 578.45) rotate(180)"
       />
       <rect
-        className="cls-1 fill"
+        className="cls-1"
         x="167.61"
         y="224.82"
         width="47.85"
@@ -462,29 +462,29 @@ export function SmallBox5() {
 
 export function Box4() {
   return (
-    <g id="box4">
+    <g id="box4" className="seating">
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m922.33,359.4h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(578.49 1315.05) rotate(-90)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m922.36,309.55h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(628.36 1265.23) rotate(-90)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m1007.35,394.01h48.86v11.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-11.63h0Z"
         transform="translate(2063.57 804.77) rotate(180)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m957.5,393.98h48.86v11.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-11.63h0Z"
         transform="translate(1963.87 804.71) rotate(180)"
       />
       <rect
-        className="cls-1 fill"
+        className="cls-1"
         x="976.86"
         y="290"
         width="75"
@@ -497,29 +497,29 @@ export function Box4() {
 
 export function Box3() {
   return (
-    <g id="box3">
+    <g id="box3" className="seating">
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m988.09,247.36h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(2025.04 512.48) rotate(180)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m938.24,247.33h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(1925.34 512.42) rotate(180)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m1022.69,162.34h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(1218.34 -875.9) rotate(90)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m1022.66,212.19h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(1268.16 -826.03) rotate(90)"
       />
       <rect
-        className="cls-1 fill"
+        className="cls-1"
         x="938.74"
         y="146.65"
         width="84.37"
@@ -532,27 +532,27 @@ export function Box3() {
 
 export function Box2() {
   return (
-    <g id="box2">
+    <g id="box2" className="seating">
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m1024.05,44.61h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(1101.96 -994.99) rotate(90)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m1024.02,94.45h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
         transform="translate(1151.78 -945.12) rotate(90)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m939.03,10h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m988.88,10.03h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
       />
       <rect
-        className="cls-1 fill"
+        className="cls-1"
         x="943.38"
         y="47.77"
         width="75"
@@ -565,25 +565,25 @@ export function Box2() {
 
 export function Table1() {
   return (
-    <g id="table1">
-      <circle className="cls-1 fill" cx="308.61" cy="647.5" r="18.5" />
+    <g id="table1" className="seating">
+      <circle className="cls-1" cx="308.61" cy="647.5" r="18.5" />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m321.76,616.67h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(139.17 1304.93) rotate(-136.48)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m276.99,617.83h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(935.5 849.95) rotate(133.52)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m278.85,662.34h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(540.52 -13.45) rotate(43.52)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m322.68,661.21h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(-382.23 448.38) rotate(-46.48)"
       />
@@ -593,25 +593,25 @@ export function Table1() {
 
 export function Table2() {
   return (
-    <g id="table2">
-      <circle className="cls-1 fill" cx="376.61" cy="576.5" r="18.5" />
+    <g id="table2" className="seating">
+      <circle className="cls-1" cx="376.61" cy="576.5" r="18.5" />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m366.55,537.25h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(777.29 1070.44) rotate(177.04)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m336.57,570.51h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(904.76 204.27) rotate(87.04)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m370.12,599.81h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(-30.9 20.36) rotate(-2.96)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m399.48,567.25h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(-145.7 1012.19) rotate(-92.96)"
       />
@@ -621,7 +621,7 @@ export function Table2() {
 
 export function Table3() {
   return (
-    <g id="table3">
+    <g id="table3" className="seating">
       <circle className="cls-1" cx="440.61" cy="647.5" r="18.5" />
       <path
         className="cls-1 "
@@ -649,25 +649,25 @@ export function Table3() {
 
 export function Table5() {
   return (
-    <g id="table5">
-      <circle className="cls-1 fill" cx="572.61" cy="647.5" r="18.5" />
+    <g id="table5" className="seating">
+      <circle className="cls-1" cx="572.61" cy="647.5" r="18.5" />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m585.76,616.67h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(594.61 1486.72) rotate(-136.48)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m540.99,617.83h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(1381.29 658.51) rotate(133.52)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m542.85,662.34h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(613.08 -195.24) rotate(43.52)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m586.68,661.21h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(-300.02 639.81) rotate(-46.48)"
       />
@@ -677,25 +677,25 @@ export function Table5() {
 
 export function Table4() {
   return (
-    <g id="table4">
-      <circle className="cls-1 fill" cx="508.61" cy="576.5" r="18.5" />
+    <g id="table4" className="seating">
+      <circle className="cls-1" cx="508.61" cy="576.5" r="18.5" />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m498.55,537.25h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(1041.12 1063.62) rotate(177.04)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m468.57,570.51h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(1029.94 72.45) rotate(87.04)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m502.12,599.81h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(-30.72 27.18) rotate(-2.96)"
       />
       <path
-        className="cls-1 fill"
+        className="cls-1"
         d="m531.48,567.25h16.51v10.91c0,2.83-2.3,5.13-5.13,5.13h-6.26c-2.83,0-5.13-2.3-5.13-5.13v-10.91h0Z"
         transform="translate(-6.88 1144.02) rotate(-92.96)"
       />
@@ -707,7 +707,7 @@ export function Table4() {
 
 export function Table6() {
   return (
-    <g id="table6">
+    <g id="table6" className="seating">
       <circle className="cls-1" cx="229.38" cy="277.02" r="18.5" />
       <path
         className="cls-1"
@@ -735,7 +735,7 @@ export function Table6() {
 
 export function Table7() {
   return (
-    <g id="table7">
+    <g id="table7" className="seating">
       <circle className="cls-1" cx="229.89" cy="378.02" r="18.5" />
       <path
         className="cls-1"
@@ -763,7 +763,7 @@ export function Table7() {
 
 export function Table8() {
   return (
-    <g id="table8">
+    <g id="table8" className="seating">
       <circle className="cls-1" cx="230.41" cy="479.02" r="18.5" />
       <path
         className="cls-1"
@@ -791,7 +791,7 @@ export function Table8() {
 
 export function Table9() {
   return (
-    <g id="table9">
+    <g id="table9" className="seating">
       <circle className="cls-1" cx="229.38" cy="580.02" r="18.5" />
       <path
         className="cls-1"
@@ -819,7 +819,7 @@ export function Table9() {
 
 export function Lodge1() {
   return (
-    <g id="lodge1">
+    <g id="lodge1" className="seating">
       <path
         className="cls-1"
         d="m278.28,581.85h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -859,7 +859,7 @@ export function Lodge1() {
 
 export function Lodge2() {
   return (
-    <g id="lodge2">
+    <g id="lodge2" className="seating">
       <path
         className="cls-1"
         d="m497.54,581.08h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -899,7 +899,7 @@ export function Lodge2() {
 
 export function Lodge3() {
   return (
-    <g id="lodge3">
+    <g id="lodge3" className="seating">
       <path
         className="cls-1"
         d="m716.81,581.85h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -939,7 +939,7 @@ export function Lodge3() {
 
 export function Box6() {
   return (
-    <g id="box6">
+    <g id="box6" className="seating">
       <path
         className="cls-1"
         d="m24.76,187.42h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H29.88c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -975,7 +975,7 @@ export function Box6() {
 
 export function Box7() {
   return (
-    <g id="box7">
+    <g id="box7" className="seating">
       <path
         className="cls-1"
         d="m24.87,363.21h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H30c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -1011,7 +1011,7 @@ export function Box7() {
 
 export function Box8() {
   return (
-    <g id="box8">
+    <g id="box8" className="seating">
       <path
         className="cls-1"
         d="m24.76,538.99h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H29.88c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -1047,7 +1047,7 @@ export function Box8() {
 
 export function SmallBox6() {
   return (
-    <g id="smallbox6">
+    <g id="smallbox6" className="seating">
       <path
         className="cls-1"
         d="m942.25,25.55h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -1071,7 +1071,7 @@ export function SmallBox6() {
 
 export function SmallBox7() {
   return (
-    <g id="smallbox7">
+    <g id="smallbox7" className="seating">
       <path
         className="cls-1"
         d="m951.15,192.81h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -1095,7 +1095,7 @@ export function SmallBox7() {
 
 export function SmallBox8() {
   return (
-    <g id="smallbox8">
+    <g id="smallbox8" className="seating">
       <path
         className="cls-1"
         d="m951.13,293.21h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -1119,7 +1119,7 @@ export function SmallBox8() {
 
 export function SmallBox9() {
   return (
-    <g id="smallbox9">
+    <g id="smallbox9" className="seating">
       <path
         className="cls-1"
         d="m951.11,393.61h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -1143,7 +1143,7 @@ export function SmallBox9() {
 
 export function SmallBox10() {
   return (
-    <g id="smallbox10">
+    <g id="smallbox10" className="seating">
       <path
         className="cls-1"
         d="m951.09,494.01h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -1167,7 +1167,7 @@ export function SmallBox10() {
 
 export function Box5() {
   return (
-    <g id="box5">
+    <g id="box5" className="seating">
       <path
         className="cls-1"
         d="m24.82,9.26h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H29.95c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"

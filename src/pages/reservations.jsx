@@ -1,4 +1,6 @@
 import { useState } from "react";
+import arrowLeft from "../assets/arrow_left.png";
+import arrowRight from "../assets/arrow_right.png";
 import {
   Box1,
   Box2,
@@ -40,7 +42,13 @@ function Reservation() {
 
   return (
     <>
-      <h1>10.10 TYTUL</h1>
+      <div className="merge">
+        <div className="merge">
+          <img src={arrowLeft} className="arrows pointer" />
+          <h1>10.10 TYTUL</h1>
+        </div>
+        <img src={arrowRight} className="arrows pointer" />
+      </div>
 
       <div className="flors">
         {/* ------------1FLOR---------------- */}
@@ -90,11 +98,17 @@ function Reservation() {
         )}
 
         <div className="" style={{ writingMode: "vertical-lr" }}>
-          <h2 className="" onClick={() => setSwitchFlor(true)}>
-            1ST FLOR
-          </h2>
-          <h2 className="" onClick={() => setSwitchFlor(false)}>
+          <h2
+            className={!switchFlor ? "pointer focus" : "pointer"}
+            onClick={() => setSwitchFlor(false)}
+          >
             2ND FLOR
+          </h2>
+          <h2
+            className={switchFlor ? "pointer focus" : "pointer"}
+            onClick={() => setSwitchFlor(true)}
+          >
+            1ST FLOR
           </h2>
         </div>
       </div>

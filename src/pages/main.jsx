@@ -1,7 +1,5 @@
-// import { useState } from "react";
 import "../index.css";
 import techno from "../assets/techno.png";
-// import qr from "../assets/qrcode.png";
 import arrow from "../assets/arrow.png";
 import { NavLink } from "react-router-dom";
 
@@ -20,10 +18,10 @@ function Main() {
           className="midleft rotate-left"
           style={{ writingMode: "vertical-rl" }}
         >
-          <NavLink to="/admin">
+          <NavLink to="/login">
             <div className="outline pointer">
               <h3>admin panel</h3>
-            </div>{" "}
+            </div>
           </NavLink>
           <NavLink to="/reservation">
             <h2 className="pointer">MAKE RESERVATION</h2>

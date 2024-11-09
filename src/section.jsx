@@ -10,17 +10,17 @@ function Section() {
     <>
       <section>
         <div className="header">
-          <div className="merge pointer" style={{ height: "fit-content" }}>
+          <div className="merge" style={{ height: "fit-content" }}>
             <Link to="/">
-              <h4>main</h4>
+              <h4 className="pointer">main</h4>
             </Link>
             <Dot />
             <NavLink to="/about">
-              <h4>about</h4>
+              <h4 className="pointer">about</h4>
             </NavLink>
             <Dot />
             <NavLink to="/events">
-              <h4>events</h4>
+              <h4 className="pointer">events</h4>
             </NavLink>
           </div>
           <>
