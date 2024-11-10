@@ -4,6 +4,7 @@
 
 html {
   --neon: rgb(21, 0, 255);
+  --neonred: rgb(151, 0, 53);
   --black: #000814;
   --white: rgb(245, 245, 245);
 }
@@ -374,6 +375,26 @@ svg {
   fill: none;
   stroke: #000;
   stroke-miterlimit: 10;
+}
+
+.reservation {
+  position: absolute;
+  width: 300px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255, 0.5);
+  left: 0px;
+  top: 0px;
+}
+
+.available {
+  filter: drop-shadow(0px 0px 3px var(--neon));
+}
+
+.reserved {
+  filter: drop-shadow(0px 0px 3px var(--neonred));
 }
 
 /* #lodge1 .cls-1 {

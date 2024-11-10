@@ -314,9 +314,9 @@ export function Flor2() {
   );
 }
 
-export function Box1() {
+export function Box1({ onClick }) {
   return (
-    <g id="box1" className="seating" onClick={() => console.log("vgbhjkl")}>
+    <g id="box1" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m27.9,9.53h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -340,9 +340,9 @@ export function Box1() {
   );
 }
 
-export function SmallBox1() {
+export function SmallBox1({ onClick }) {
   return (
-    <g id="smallbox1" className="seating">
+    <g id="smallbox1" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m-6.67,363.43h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H-1.54c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -364,9 +364,9 @@ export function SmallBox1() {
   );
 }
 
-export function SmallBox2() {
+export function SmallBox2({ onClick }) {
   return (
-    <g id="smallbox2" className="seating">
+    <g id="smallbox2" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m-6.82,293h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H-1.69c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -388,9 +388,9 @@ export function SmallBox2() {
   );
 }
 
-export function SmallBox3() {
+export function SmallBox3({ onClick }) {
   return (
-    <g id="smallbox3" className="seating">
+    <g id="smallbox3" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m-6.08,222.81h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H-.95c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -412,9 +412,9 @@ export function SmallBox3() {
   );
 }
 
-export function SmallBox4() {
+export function SmallBox4({ onClick }) {
   return (
-    <g id="smallbox4" className="seating">
+    <g id="smallbox4" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m166.97,298.34h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -436,9 +436,9 @@ export function SmallBox4() {
   );
 }
 
-export function SmallBox5() {
+export function SmallBox5({ onClick }) {
   return (
-    <g id="smallbox5" className="seating">
+    <g id="smallbox5" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m166.97,198.34h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -460,9 +460,9 @@ export function SmallBox5() {
   );
 }
 
-export function Box4() {
+export function Box4({ onClick }) {
   return (
-    <g id="box4" className="seating">
+    <g id="box4" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m922.33,359.4h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -495,9 +495,9 @@ export function Box4() {
   );
 }
 
-export function Box3() {
+export function Box3({ onClick }) {
   return (
-    <g id="box3" className="seating">
+    <g id="box3" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m988.09,247.36h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -530,9 +530,9 @@ export function Box3() {
   );
 }
 
-export function Box2() {
+export function Box2({ onClick }) {
   return (
-    <g id="box2" className="seating">
+    <g id="box2" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m1024.05,44.61h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -563,9 +563,9 @@ export function Box2() {
   );
 }
 
-export function Table1() {
+export function Table1({ onClick }) {
   return (
-    <g id="table1" className="seating">
+    <g id="table1" className="seating" onClick={onClick}>
       <circle className="cls-1" cx="308.61" cy="647.5" r="18.5" />
       <path
         className="cls-1"
@@ -591,9 +591,9 @@ export function Table1() {
   );
 }
 
-export function Table2() {
+export function Table2({ onClick }) {
   return (
-    <g id="table2" className="seating">
+    <g id="table2" className="seating" onClick={onClick}>
       <circle className="cls-1" cx="376.61" cy="576.5" r="18.5" />
       <path
         className="cls-1"
@@ -619,9 +619,9 @@ export function Table2() {
   );
 }
 
-export function Table3() {
+export function Table3({ onClick }) {
   return (
-    <g id="table3" className="seating">
+    <g id="table3" className="seating" onClick={onClick}>
       <circle className="cls-1" cx="440.61" cy="647.5" r="18.5" />
       <path
         className="cls-1 "
@@ -647,9 +647,9 @@ export function Table3() {
   );
 }
 
-export function Table5() {
+export function Table5({ onClick }) {
   return (
-    <g id="table5" className="seating">
+    <g id="table5" className="seating" onClick={onClick}>
       <circle className="cls-1" cx="572.61" cy="647.5" r="18.5" />
       <path
         className="cls-1"
@@ -675,9 +675,9 @@ export function Table5() {
   );
 }
 
-export function Table4() {
+export function Table4({ onClick }) {
   return (
-    <g id="table4" className="seating">
+    <g id="table4" className="seating" onClick={onClick}>
       <circle className="cls-1" cx="508.61" cy="576.5" r="18.5" />
       <path
         className="cls-1"
@@ -705,9 +705,9 @@ export function Table4() {
 
 // -----------------2ND
 
-export function Table6() {
+export function Table6({ onClick }) {
   return (
-    <g id="table6" className="seating">
+    <g id="table6" className="seating" onClick={onClick}>
       <circle className="cls-1" cx="229.38" cy="277.02" r="18.5" />
       <path
         className="cls-1"
@@ -733,9 +733,9 @@ export function Table6() {
   );
 }
 
-export function Table7() {
+export function Table7({ onClick }) {
   return (
-    <g id="table7" className="seating">
+    <g id="table7" className="seating" onClick={onClick}>
       <circle className="cls-1" cx="229.89" cy="378.02" r="18.5" />
       <path
         className="cls-1"
@@ -761,9 +761,9 @@ export function Table7() {
   );
 }
 
-export function Table8() {
+export function Table8({ onClick }) {
   return (
-    <g id="table8" className="seating">
+    <g id="table8" className="seating" onClick={onClick}>
       <circle className="cls-1" cx="230.41" cy="479.02" r="18.5" />
       <path
         className="cls-1"
@@ -789,9 +789,9 @@ export function Table8() {
   );
 }
 
-export function Table9() {
+export function Table9({ onClick }) {
   return (
-    <g id="table9" className="seating">
+    <g id="table9" className="seating" onClick={onClick}>
       <circle className="cls-1" cx="229.38" cy="580.02" r="18.5" />
       <path
         className="cls-1"
@@ -817,9 +817,9 @@ export function Table9() {
   );
 }
 
-export function Lodge1() {
+export function Lodge1({ onClick }) {
   return (
-    <g id="lodge1" className="seating">
+    <g id="lodge1" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m278.28,581.85h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -857,9 +857,9 @@ export function Lodge1() {
   );
 }
 
-export function Lodge2() {
+export function Lodge2({ onClick }) {
   return (
-    <g id="lodge2" className="seating">
+    <g id="lodge2" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m497.54,581.08h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -897,9 +897,9 @@ export function Lodge2() {
   );
 }
 
-export function Lodge3() {
+export function Lodge3({ onClick }) {
   return (
-    <g id="lodge3" className="seating">
+    <g id="lodge3" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m716.81,581.85h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -937,9 +937,9 @@ export function Lodge3() {
   );
 }
 
-export function Box6() {
+export function Box6({ onClick }) {
   return (
-    <g id="box6" className="seating">
+    <g id="box6" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m24.76,187.42h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H29.88c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -973,9 +973,9 @@ export function Box6() {
   );
 }
 
-export function Box7() {
+export function Box7({ onClick }) {
   return (
-    <g id="box7" className="seating">
+    <g id="box7" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m24.87,363.21h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H30c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -1009,9 +1009,9 @@ export function Box7() {
   );
 }
 
-export function Box8() {
+export function Box8({ onClick }) {
   return (
-    <g id="box8" className="seating">
+    <g id="box8" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m24.76,538.99h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H29.88c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -1045,9 +1045,9 @@ export function Box8() {
   );
 }
 
-export function SmallBox6() {
+export function SmallBox6({ onClick }) {
   return (
-    <g id="smallbox6" className="seating">
+    <g id="smallbox6" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m942.25,25.55h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -1069,9 +1069,9 @@ export function SmallBox6() {
   );
 }
 
-export function SmallBox7() {
+export function SmallBox7({ onClick }) {
   return (
-    <g id="smallbox7" className="seating">
+    <g id="smallbox7" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m951.15,192.81h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -1093,9 +1093,9 @@ export function SmallBox7() {
   );
 }
 
-export function SmallBox8() {
+export function SmallBox8({ onClick }) {
   return (
-    <g id="smallbox8" className="seating">
+    <g id="smallbox8" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m951.13,293.21h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -1117,9 +1117,9 @@ export function SmallBox8() {
   );
 }
 
-export function SmallBox9() {
+export function SmallBox9({ onClick }) {
   return (
-    <g id="smallbox9" className="seating">
+    <g id="smallbox9" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m951.11,393.61h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -1141,9 +1141,9 @@ export function SmallBox9() {
   );
 }
 
-export function SmallBox10() {
+export function SmallBox10({ onClick }) {
   return (
-    <g id="smallbox10" className="seating">
+    <g id="smallbox10" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m951.09,494.01h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13h-38.61c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
@@ -1165,9 +1165,9 @@ export function SmallBox10() {
   );
 }
 
-export function Box5() {
+export function Box5({ onClick }) {
   return (
-    <g id="box5" className="seating">
+    <g id="box5" className="seating" onClick={onClick}>
       <path
         className="cls-1"
         d="m24.82,9.26h48.86v12.63c0,2.83-2.3,5.13-5.13,5.13H29.95c-2.83,0-5.13-2.3-5.13-5.13v-12.63h0Z"
