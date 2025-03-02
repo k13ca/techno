@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import arrowLeft from "../assets/arrow_left.png";
 import arrowRight from "../assets/arrow_right.png";
 import {
@@ -36,68 +36,201 @@ import {
   Table9,
 } from "../assets/svg/seatings";
 import "../index.css";
+import { NavLink } from "react-router-dom";
+import { EventsContext } from "../contexts/EventsContext";
 
 function Reservation() {
   const [switchFlor, setSwitchFlor] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
+  const [eventIndex, setEventIndex] = useState(0);
+  // const [reservedSeatingsModal, setReservedSeatingsModal] = useState(false);
+  const {
+    events,
+    currEvent,
+    setCurrEvent,
+    reservationInfo,
+    reservation,
+    setReservation,
+  } = useContext(EventsContext);
+
+  console.log("reservation page", reservation);
+
   const position = useRef(null);
 
-  // USING REF ----------------------------------
-  // function setPosition(positionX, positionY) {
+  const reservationAvailabilityStyle = "seating";
 
-  //   if (position) {
-  //     console.log("MODAL", position);
-  //     position.current.style.left = `${positionX}px`;
-  //     position.current.style.top = `${positionY}px`;
-  //   }
-  // }
+  const reservationAvailableStyleModal = "outline reservation available";
+  const reservationReservedStyleModal = "outline reservation reserved";
 
-  // WITHOUT REF ----------------------------------
-  function setPosition(positionX, positionY) {
-    const reservationModal = document.querySelector(".reservation");
-    reservationModal.style.left = `${positionX}px`;
-    reservationModal.style.top = `${positionY}px`;
+  const reservationAvailableStyle = ("outline", "reservation");
+  const reservationReservedStyle = ("outline", "reservation", "available");
+  const [modalStyles, setModalStyles] = useState(
+    reservationAvailableStyleModal
+  );
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest(".cls-1")) {
+        setShowModal(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [setShowModal]);
+
+  // ----------PIN-GENERATION----------
+
+  const pins = reservationInfo.map((reservation) => reservation.pin);
+
+  function generatePin() {
+    let pin;
+    do {
+      pin = Math.floor(Math.random() * (9999 - 1000)) + 1;
+    } while (pins.includes(pin));
+
+    // setReservation({ ...reservation, reservation.pin: `${pin}` });
+
+    // setReservation((reservation) => (reservation.pin = `${pin}`));
+    //setReservation((reservation) => (reservation, (reservation.pin = `${pin}`))
+    setReservation({ ...reservation, pin: `${pin}` });
+    console.log(pin);
   }
 
+  // ----------MODAL-POSITION----------
+
+  useEffect(() => {
+    if (position.current && showModal) {
+      position.current.style.left = `${
+        coordinates.x + 300 > window.innerWidth
+          ? coordinates.x - 300
+          : coordinates.x
+      }px`;
+      position.current.style.top = `${coordinates.y}px`;
+    }
+  }, [showModal, coordinates]);
+
+  // ----------EVENT-ARROWS----------
+
+  function rightArrow() {
+    if (eventIndex < events.length - 1) setEventIndex((current) => current + 1);
+  }
+
+  function leftArrow() {
+    if (eventIndex > 0) setEventIndex((current) => current - 1);
+  }
+
+  // ----------MAP-TITLE----------
+
+  useEffect(() => {
+    if (events.length > 0) {
+      const currEvent = events[eventIndex];
+      currEvent.eventname = currEvent.eventname.toUpperCase();
+      setCurrEvent(currEvent);
+    }
+
+    // ----------RESERVED-SEATINGS----------
+
+    const reservedSeatings = reservationInfo.map(
+      (reservation) => reservation.seatingname
+    );
+
+    reservedSeatings
+      .map((seating) => document.getElementById(seating))
+      .filter((seatingHTML) => seatingHTML != null)
+      .forEach((seating) => {
+        seating.classList.remove(`${reservationAvailableStyle}`);
+        seating.classList.add(`${reservationReservedStyle}`);
+      });
+
+    return () => {
+      reservedSeatings
+        .map((seating) => document.getElementById(seating))
+        .filter((seatingHTML) => seatingHTML != null)
+        .forEach((seating) => {
+          seating.classList.remove(`${reservationReservedStyle}`);
+          seating.classList.add(`${reservationAvailableStyle}`);
+        });
+    };
+  }, [events, eventIndex, switchFlor, reservationInfo]);
+
   // TABLE EVENT CLICK ----------------------------------
+
   function handleSeatingClick(e) {
+    setModalStyles(reservationAvailableStyleModal);
     const positionX = e.nativeEvent.clientX;
     const positionY = e.nativeEvent.clientY;
-
+    // generatePin();
     setShowModal(true);
-    setPosition(positionX, positionY);
-    console.log("STOLIK", e);
-    // console.log(e.target.parentElement.id);
+    setCoordinates({ x: positionX, y: positionY });
+    const tablename = e.target.parentElement.id;
+    if (reservationInfo.map((item) => item.seatingname).includes(tablename)) {
+      setModalStyles(reservationReservedStyleModal);
+      return;
+    }
+    setReservation({
+      seatingname: `${tablename}`,
+      date: currEvent.date,
+      title: currEvent.eventname,
+    });
   }
 
   return (
     <>
       {showModal ? (
-        <div ref={position} className="outline reservation available">
-          <h4>make a reservation</h4>
-          {/* <h4>reserved</h4> */}
-        </div>
+        <NavLink to="/reservation-form" state={reservation}>
+          <div
+            ref={position}
+            // className={
+            //   reservedSeatingsModal
+            //     ? reservationReservedStyleModal
+            //     : reservationAvailableStyleModal
+            // }
+            className={modalStyles}
+            onClick={() => generatePin()}
+            // onClick={() => handleModalClick()}
+          >
+            <h4>
+              make a reservation <br /> ({reservation.seatingname})
+            </h4>
+
+            {/* <h4>reserved</h4> */}
+          </div>
+        </NavLink>
       ) : (
         <></>
       )}
 
-      <div className="merge">
-        <div className="merge">
-          <img
-            src={arrowLeft}
-            className="arrows pointer"
-            onClick={handleSeatingClick}
-          />
-          <h1 onClick={handleSeatingClick}>10.10 TYTUL</h1>
+      <div className="merge" id="reservation-header">
+        <img
+          src={arrowLeft}
+          onClick={() => leftArrow()}
+          className="arrows pointer"
+        />
+        <div>
+          <h1>
+            {/* 10.10 TYTUL  */}
+            {currEvent?.date} {currEvent?.eventname}
+          </h1>
+
+          {/* <h1>
+            {currEvent?.date || null} {currEvent?.eventname || null}
+          </h1> */}
         </div>
-        <img src={arrowRight} className="arrows pointer" />
+        <img
+          src={arrowRight}
+          onClick={() => rightArrow()}
+          className="arrows pointer"
+        />
       </div>
 
       <div
         className="flors"
-        onClick={() => {
-          () => handleSeatingClick;
-        }}
+        // style={{ backgroundColor: "red" }}
+        // onClick={() => console.log("dfg")}
       >
         {/* ------------1FLOR---------------- */}
 
@@ -105,42 +238,134 @@ function Reservation() {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1073.61 688">
             <Flor1 />
             <g id="seatings">
-              <Box1 onClick={handleSeatingClick}></Box1>
-              <SmallBox1 onClick={handleSeatingClick}></SmallBox1>
-              <SmallBox2 onClick={handleSeatingClick}></SmallBox2>
-              <SmallBox3 onClick={handleSeatingClick}> </SmallBox3>
-              <SmallBox4 onClick={handleSeatingClick}></SmallBox4>
-              <SmallBox5 onClick={handleSeatingClick}></SmallBox5>
-              <Box4 onClick={handleSeatingClick}></Box4>
-              <Box3 onClick={handleSeatingClick}></Box3>
-              <Box2 onClick={handleSeatingClick}></Box2>
-              <Table1 onClick={handleSeatingClick}></Table1>
-              <Table2 onClick={handleSeatingClick}></Table2>
-              <Table3 onClick={handleSeatingClick}></Table3>
-              <Table4 onClick={handleSeatingClick}></Table4>
-              <Table5 onClick={handleSeatingClick}></Table5>
+              <Box1
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Box1>
+              <SmallBox1
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></SmallBox1>
+              <SmallBox2
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></SmallBox2>
+              <SmallBox3
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              >
+                {" "}
+              </SmallBox3>
+              <SmallBox4
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></SmallBox4>
+              <SmallBox5
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></SmallBox5>
+              <Box4
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Box4>
+              <Box3
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Box3>
+              <Box2
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Box2>
+              <Table1
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Table1>
+              <Table2
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Table2>
+              <Table3
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Table3>
+              <Table4
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Table4>
+              <Table5
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Table5>
             </g>
           </svg>
         ) : (
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1073 688">
             <Flor2 />
             <g id="seatings">
-              <Table6 onClick={handleSeatingClick}></Table6>
-              <Table7 onClick={handleSeatingClick}></Table7>
-              <Table8 onClick={handleSeatingClick}></Table8>
-              <Table9 onClick={handleSeatingClick}></Table9>
-              <Lodge1 onClick={handleSeatingClick}></Lodge1>
-              <Lodge2 onClick={handleSeatingClick}></Lodge2>
-              <Lodge3 onClick={handleSeatingClick}></Lodge3>
-              <Box5 onClick={handleSeatingClick}></Box5>
-              <Box6 onClick={handleSeatingClick}></Box6>
-              <Box7 onClick={handleSeatingClick}></Box7>
-              <Box8 onClick={handleSeatingClick}></Box8>
-              <SmallBox6 onClick={handleSeatingClick}></SmallBox6>
-              <SmallBox7 onClick={handleSeatingClick}></SmallBox7>
-              <SmallBox8 onClick={handleSeatingClick}></SmallBox8>
-              <SmallBox9 onClick={handleSeatingClick}></SmallBox9>
-              <SmallBox10 onClick={handleSeatingClick}></SmallBox10>
+              <Table6
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Table6>
+              <Table7
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Table7>
+              <Table8
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Table8>
+              <Table9
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Table9>
+              <Lodge1
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Lodge1>
+              <Lodge2
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Lodge2>
+              <Lodge3
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Lodge3>
+              <Box5
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Box5>
+              <Box6
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Box6>
+              <Box7
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Box7>
+              <Box8
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></Box8>
+              <SmallBox6
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></SmallBox6>
+              <SmallBox7
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></SmallBox7>
+              <SmallBox8
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></SmallBox8>
+              <SmallBox9
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></SmallBox9>
+              <SmallBox10
+                seatingStyle={reservationAvailabilityStyle}
+                onSeatingClick={handleSeatingClick}
+              ></SmallBox10>
             </g>
           </svg>
         )}
@@ -165,12 +390,3 @@ function Reservation() {
 }
 
 export default Reservation;
-
-// function setPosition(positionX, positionY) {
-
-//   if (position) {
-//     console.log("MODAL", position);
-//     position.current.style.left = `${positionX}px`;
-//     position.current.style.top = `${positionY}px`;
-//   }
-// }

@@ -25,10 +25,11 @@ function Section() {
           </div>
           <>
             {location.pathname === "/" ? (
-              <div className="merge">
+              <div className="merge small-device">
                 <div className="contact">
                   <h3>kodtechno@contact.com </h3>
                   <h3>+321456790</h3>
+
                   <div className="outline">
                     <h3>UL. JXDWKKDJ 56</h3>
                   </div>

@@ -15,7 +15,7 @@ function About() {
       </h2>
 
       <h2 className="about1">
-        Its a fullstack project basen on react with (???) database where you can
+        Its a fullstack project basen on react with SQL database where you can
         also be a customer just as an owner.
       </h2>
       <div className="about2">
@@ -27,13 +27,13 @@ function About() {
           className={`hidden-info ${revealed.div1 ? "revealed" : "hidden"}`}
           onClick={() => handleInfo("div1")}
         >
-          <h4>ertyuiop</h4>
+          <h4>adminmode</h4>
         </div>
         <div
           className={`hidden-info ${revealed.div2 ? "revealed" : "hidden"}`}
           onClick={() => handleInfo("div2")}
         >
-          <h4>ertyuiop</h4>
+          <h4>passtoadminpanel</h4>
         </div>
       </div>
       <h2 className="about1">(some parts are still in progress)</h2>

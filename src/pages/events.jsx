@@ -1,41 +1,31 @@
-// import line from "../assets/expired-line.png";
-
-export function EventItem() {
-  return (
-    <>
-      <div className="event-item">
-        <h2> TYTUL EBEEKRK HDWIDHCECNK</h2>
-        <h2>03.04.2024 </h2>
-        <div className="event">
-          <h3>
-            15.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO /
-            SOMEONE YOU WANT TO HEAR /
-          </h3>
-        </div>
-      </div>
-    </>
-  );
-}
+import { useContext } from "react";
+import EventItem from "../components/event";
+import { EventsContext } from "../contexts/EventsContext";
 
 function Events() {
+  const { events, pastEvents } = useContext(EventsContext);
+  console.log("ev events", events);
+
   return (
     <>
       <div className="events-list">
-        <div className="event-item">
-          <h2 className="expired"> TYTUL EBEEKRK HDWIDHCECNK</h2>
-          <h2 className="expired">03.04.2024 </h2>
-          <div className="event">
-            <h3 className="expired">
-              15.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
-              / SOMEONE YOU WANT TO HEAR / WERGTHYD / WERTYHJHGFDEDFG / DFGER
-              FEFERG
-            </h3>
-          </div>
-        </div>
-        <EventItem className="event-item-expired" /> <EventItem /> <EventItem />{" "}
-        <EventItem /> <EventItem /> <EventItem /> <EventItem /> <EventItem />{" "}
-        <EventItem /> <EventItem /> <EventItem /> <EventItem /> <EventItem />{" "}
-        <EventItem />
+        {pastEvents.slice(-3).map((event) => (
+          <EventItem
+            // classname={past}
+            key={event.id}
+            title={event.eventname}
+            date={event.date}
+            artists={event.artists}
+          />
+        ))}
+        {events.map((event) => (
+          <EventItem
+            key={event.id}
+            title={event.eventname}
+            date={event.date}
+            artists={event.artists}
+          />
+        ))}
       </div>
     </>
   );

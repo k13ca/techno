@@ -14,13 +14,10 @@ function Main() {
       {/* --------------MID-------------------  */}
 
       <div className="midpart">
-        <div
-          className="midleft rotate-left"
-          style={{ writingMode: "vertical-rl" }}
-        >
+        <div className="midleft rotate-left">
           <NavLink to="/login">
             <div className="outline pointer">
-              <h3>admin panel</h3>
+              <h3 className="">admin panel</h3>
             </div>
           </NavLink>
           <NavLink to="/reservation">
