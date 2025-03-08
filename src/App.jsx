@@ -9,7 +9,7 @@ import Reservation from "./pages/reservations";
 import Section from "./section";
 import ReservationForm from "./pages/reservation-form";
 import { EventsProvider } from "./contexts/EventsContext";
-
+import { AuthProvider } from "./contexts/AuthContext";
 function App() {
   return (
     <EventsProvider>
@@ -18,7 +18,14 @@ function App() {
           <Route element={<Section />}>
             <Route index element={<Main />} />
             <Route path="about" element={<About />} />
-            <Route path="login" element={<Login />}></Route>
+            <Route
+              path="login"
+              element={
+                <AuthProvider>
+                  <Login />
+                </AuthProvider>
+              }
+            ></Route>
             <Route path="events" element={<Events />} />
             <Route path="reservation" element={<Reservation />} />
             <Route path="reservation-form" element={<ReservationForm />} />

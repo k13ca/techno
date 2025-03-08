@@ -8,13 +8,16 @@ const ADMIN = {
 };
 
 function AuthProvider({ children }) {
-  // function login(username, password) {
-  //   if (username === ADMIN.username && password === ADMIN.password) {
-  //     null;
-  //   }
-  // }
+  function login(username, password) {
+    if (username === ADMIN.username && password === ADMIN.password) {
+      return true;
+    }
+    return false;
+  }
 
-  return <AuthContext.Provider value={{}}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ login }}>{children}</AuthContext.Provider>
+  );
 }
 
 export { AuthProvider, AuthContext };

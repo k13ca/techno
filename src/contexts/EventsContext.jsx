@@ -16,7 +16,7 @@ function EventsProvider({ children }) {
     pin: "",
   });
 
-  const API_HOST = import.meta.VITE_API_HOST;
+  const API_HOST = import.meta.env.VITE_API_HOST;
   useEffect(() => {
     async function fetchEvents() {
       const res = await fetch(`${API_HOST}/events`);
