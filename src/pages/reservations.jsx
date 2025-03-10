@@ -36,12 +36,13 @@ import {
   Table9,
 } from "../assets/svg/seatings";
 import "../index.css";
-import { NavLink } from "react-router-dom";
 import { EventsContext } from "../contexts/EventsContext";
+import { useNavigate } from "react-router-dom";
 
 function Reservation() {
   const [switchFlor, setSwitchFlor] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [isReserved, setIsReserved] = useState(false);
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
   const [eventIndex, setEventIndex] = useState(0);
   // const [reservedSeatingsModal, setReservedSeatingsModal] = useState(false);
@@ -53,6 +54,8 @@ function Reservation() {
     reservation,
     setReservation,
   } = useContext(EventsContext);
+
+  const navigate = useNavigate();
 
   console.log("reservation page", reservation);
 
@@ -91,11 +94,6 @@ function Reservation() {
     do {
       pin = Math.floor(Math.random() * (9999 - 1000)) + 1;
     } while (pins.includes(pin));
-
-    // setReservation({ ...reservation, reservation.pin: `${pin}` });
-
-    // setReservation((reservation) => (reservation.pin = `${pin}`));
-    //setReservation((reservation) => (reservation, (reservation.pin = `${pin}`))
     setReservation({ ...reservation, pin: `${pin}` });
     console.log(pin);
   }
@@ -123,6 +121,12 @@ function Reservation() {
     if (eventIndex > 0) setEventIndex((current) => current - 1);
   }
 
+  const reservedSeatings = reservationInfo
+    .map((reservation) => reservation.seatingname)
+    .map((seating) => document.getElementById(seating))
+    .filter((seatingHTML) => seatingHTML != null);
+  console.log(reservedSeatings);
+
   // ----------MAP-TITLE----------
 
   useEffect(() => {
@@ -134,26 +138,16 @@ function Reservation() {
 
     // ----------RESERVED-SEATINGS----------
 
-    const reservedSeatings = reservationInfo.map(
-      (reservation) => reservation.seatingname
-    );
-
-    reservedSeatings
-      .map((seating) => document.getElementById(seating))
-      .filter((seatingHTML) => seatingHTML != null)
-      .forEach((seating) => {
-        seating.classList.remove(`${reservationAvailableStyle}`);
-        seating.classList.add(`${reservationReservedStyle}`);
-      });
+    reservedSeatings.forEach((seating) => {
+      seating.classList.remove(`${reservationAvailableStyle}`);
+      seating.classList.add(`${reservationReservedStyle}`);
+    });
 
     return () => {
-      reservedSeatings
-        .map((seating) => document.getElementById(seating))
-        .filter((seatingHTML) => seatingHTML != null)
-        .forEach((seating) => {
-          seating.classList.remove(`${reservationReservedStyle}`);
-          seating.classList.add(`${reservationAvailableStyle}`);
-        });
+      reservedSeatings.forEach((seating) => {
+        seating.classList.remove(`${reservationReservedStyle}`);
+        seating.classList.add(`${reservationAvailableStyle}`);
+      });
     };
   }, [events, eventIndex, switchFlor, reservationInfo]);
 
@@ -163,14 +157,15 @@ function Reservation() {
     setModalStyles(reservationAvailableStyleModal);
     const positionX = e.nativeEvent.clientX;
     const positionY = e.nativeEvent.clientY;
-    // generatePin();
     setShowModal(true);
     setCoordinates({ x: positionX, y: positionY });
     const tablename = e.target.parentElement.id;
     if (reservationInfo.map((item) => item.seatingname).includes(tablename)) {
       setModalStyles(reservationReservedStyleModal);
+      setIsReserved(true);
       return;
     }
+    setIsReserved(false);
     setReservation({
       seatingname: `${tablename}`,
       date: currEvent.date,
@@ -178,28 +173,26 @@ function Reservation() {
     });
   }
 
+  function handleModalClick() {
+    if (isReserved) {
+      return;
+    }
+    generatePin();
+    navigate("/reservation-form");
+  }
+
   return (
     <>
       {showModal ? (
-        <NavLink to="/reservation-form" state={reservation}>
-          <div
-            ref={position}
-            // className={
-            //   reservedSeatingsModal
-            //     ? reservationReservedStyleModal
-            //     : reservationAvailableStyleModal
-            // }
-            className={modalStyles}
-            onClick={() => generatePin()}
-            // onClick={() => handleModalClick()}
-          >
+        <div ref={position} className={modalStyles} onClick={handleModalClick}>
+          {isReserved ? (
+            <h4>reserved</h4>
+          ) : (
             <h4>
               make a reservation <br /> ({reservation.seatingname})
             </h4>
-
-            {/* <h4>reserved</h4> */}
-          </div>
-        </NavLink>
+          )}
+        </div>
       ) : (
         <></>
       )}
@@ -207,18 +200,13 @@ function Reservation() {
       <div className="merge" id="reservation-header">
         <img
           src={arrowLeft}
-          onClick={() => leftArrow()}
+          onClick={(e) => leftArrow(e)}
           className="arrows pointer"
         />
         <div>
           <h1>
-            {/* 10.10 TYTUL  */}
             {currEvent?.date} {currEvent?.eventname}
           </h1>
-
-          {/* <h1>
-            {currEvent?.date || null} {currEvent?.eventname || null}
-          </h1> */}
         </div>
         <img
           src={arrowRight}
@@ -227,11 +215,7 @@ function Reservation() {
         />
       </div>
 
-      <div
-        className="flors"
-        // style={{ backgroundColor: "red" }}
-        // onClick={() => console.log("dfg")}
-      >
+      <div className="flors">
         {/* ------------1FLOR---------------- */}
 
         {switchFlor ? (
@@ -253,9 +237,7 @@ function Reservation() {
               <SmallBox3
                 seatingStyle={reservationAvailabilityStyle}
                 onSeatingClick={handleSeatingClick}
-              >
-                {" "}
-              </SmallBox3>
+              ></SmallBox3>
               <SmallBox4
                 seatingStyle={reservationAvailabilityStyle}
                 onSeatingClick={handleSeatingClick}

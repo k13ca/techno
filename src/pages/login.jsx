@@ -1,18 +1,26 @@
-import { AuthProvider, AuthContext } from "../contexts/AuthContext";
-import { useContext } from "react";
-
-// const {login} = useAuth
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
+import { useContext, useState } from "react";
 
 function Login() {
+  const [notValid, setNotValid] = useState(false);
   const ctx = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleFormSubmit = (e) => {
     const username = e.target[0].value;
     const password = e.target[1].value;
     e.preventDefault();
-    console.log(username, password);
-    console.log(ctx);
+    const isLogged = ctx.login(username, password);
+
+    if (!isLogged) {
+      setNotValid(true);
+      return;
+    }
+
+    navigate("/admin");
   };
+
   return (
     <form className="login-form" onSubmit={handleFormSubmit}>
       <h2 style={{ textAlign: "center" }}>
@@ -21,6 +29,7 @@ function Login() {
       </h2>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <input
+          onChange={() => setNotValid(false)}
           type="text"
           placeholder="login"
           className="user-input"
@@ -35,7 +44,7 @@ function Login() {
           required
         ></input>
         <div className="alert">
-          {/* <h3>login or password is incorrect</h3> */}
+          {notValid && <h3>login or password is incorrect</h3>}
         </div>
       </div>
 

@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import infoIcon from "../assets/info-icon.png";
 import arrow from "../assets/arrow.png";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { EventsContext } from "../contexts/EventsContext";
 
 function ReservationForm() {
@@ -10,7 +10,6 @@ function ReservationForm() {
   const [countDown, setCountDown] = useState(5);
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   const { reservation } = useContext(EventsContext);
 
@@ -116,11 +115,11 @@ function ReservationForm() {
           <h3 className="outline">event informations</h3>
 
           <div className="reservation-merge left">
-            <h2>{location.state.title}</h2>
-            <h2>{location.state.date}</h2>
+            <h2>{reservation.title}</h2>
+            <h2>{reservation.date}</h2>
 
             <h3 style={{ marginBottom: "0px" }}>seating:</h3>
-            <h4>{location.state.seatingname}</h4>
+            <h4>{reservation.seatingname}</h4>
           </div>
           <div className="reservation-merge">
             <h3
