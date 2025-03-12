@@ -249,12 +249,11 @@ h4 {
   text-align: justify;
   text-align-last: justify;
   font-size: 2.2vh;
-
   line-height: 100%;
   text-transform: uppercase;
 }
 
-.events {
+.events-loop {
   overflow: hidden;
   box-sizing: border-box;
   display: flex;
@@ -265,45 +264,57 @@ h4 {
   flex-wrap: nowrap;
 }
 
-.event {
+.events-loop-event {
   cursor: pointer;
   height: 90%;
   min-width: 220px;
+  max-width: 220px;
   text-align: justify;
   text-align-last: justify;
   line-height: 100%;
   word-spacing: 20px;
   margin-right: 30px;
   width: fit-content;
+  text-transform: uppercase;
 }
 
-.loop1 {
-  display: inline-block;
-  animation: loop1 10s linear infinite;
-}
-
-.loop2 {
-  display: inline-block;
-  animation: loop2 10s linear infinite;
-  animation-delay: 5s;
-}
-
-@keyframes loop1 {
-  0% {
-    transform: translateX(380%);
+@keyframes slideAnim {
+  from {
+    transform: translateX(0%);
   }
-  100% {
-    transform: translateX(-450%);
+  to {
+    transform: translateX(-100%);
   }
 }
 
-@keyframes loop2 {
-  0% {
-    transform: translateX(-38%);
-  }
-  100% {
-    transform: translateX(-868%);
-  }
+.looper {
+  /* width: 100%;
+  overflow: hidden; */
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  max-width: 63%;
+  height: 100%;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.looper__innerList {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  height: 100%;
+}
+
+.looper__innerList[data-animate="true"] .looper__listInstance {
+  animation: slideAnim linear infinite;
+}
+
+.looper__listInstance {
+  display: flex;
+  width: max-content;
+  animation: none;
 }
 
 .note {
@@ -544,6 +555,7 @@ svg {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 10px;
+  row-gap: 50px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -552,14 +564,17 @@ svg {
   animation: none;
 }
 
-.event-past {
-  opacity: 50%;
-}
-
 .event-item {
   height: 100%;
   padding-inline: 30px;
-  margin-bottom: 60px;
+  text-transform: uppercase;
+  display: inline-block;
+  position: relative;
+  margin: 0;
+}
+
+.expired {
+  opacity: 40%;
 }
 
 .event-item-artists {
@@ -571,8 +586,18 @@ svg {
   word-spacing: 20px;
 }
 
-.expired {
-  opacity: 40%;
+.cross-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background-color: var(--black);
+  transform-origin: 0 0;
+  pointer-events: none;
+}
+
+.hide {
+  display: none;
 }
 
 /* ---------------------ADMIN LOGIN---------------------- */
@@ -686,16 +711,6 @@ svg {
     min-height: 30px;
     max-width: 150px;
     font-size: 12px;
-
-    /* all: unset;
-    background-color: var(--black);
-
-    transform: skew(-20deg);
-    margin: 10px;
-    padding-inline: 30px;
-    color: var(--white);
-    font-family: "Stalinist One", sans-serif;
-    font-style: normal; */
   }
 
   .login-form .outline {
@@ -769,8 +784,8 @@ svg {
 
   .events-list {
     grid-template-columns: 1fr 1fr 1fr;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
 }
 
@@ -834,8 +849,6 @@ svg {
 
   .events-list {
     grid-template-columns: 1fr 1fr;
-    overflow-x: scroll;
-    overflow-y: hidden;
   }
 }
 
@@ -1034,7 +1047,5 @@ svg {
 
   .events-list {
     grid-template-columns: 1fr 1fr;
-    overflow-x: scroll;
-    overflow-y: hidden;
   }
 }

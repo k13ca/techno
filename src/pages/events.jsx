@@ -9,20 +9,24 @@ function Events() {
       <div className="events-list">
         {pastEvents.slice(-3).map((event) => (
           <EventItem
-            eventItemClass={"event-item event-past"}
+            crossLineClass={"cross-line"}
+            expired={"expired"}
             key={event.id}
             title={event.eventname}
             date={event.date}
             artists={event.artists}
+            borderStyle={{ border: "3px solid rgba(0,0,0, 0.4)" }}
           />
         ))}
         {events.map((event) => (
           <EventItem
-            eventItemClass={"event-item"}
+            crossLineClass={"hide"}
             key={event.id}
             title={event.eventname}
             date={event.date}
             artists={event.artists}
+            expired={""}
+            borderStyle={{ border: "3px solid rgb(0,0,0)" }}
           />
         ))}
       </div>

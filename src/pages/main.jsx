@@ -2,8 +2,13 @@ import "../index.css";
 import techno from "../assets/techno.png";
 import arrow from "../assets/arrow.png";
 import { NavLink } from "react-router-dom";
+import InfiniteLoop from "../components/InfinityLoop";
+import { useContext } from "react";
+import { EventsContext } from "../contexts/EventsContext";
 
 function Main() {
+  const { events } = useContext(EventsContext);
+  console.log(events);
   return (
     <>
       {/* --------------HEADER----------------  */}
@@ -45,56 +50,18 @@ function Main() {
           dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
           proident, sunt in culpa qui officia deserunt mollit anim id est.
         </h2>
-        <div className="events">
-          <div className="event loop1">
-            <h3>
-              15.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
-              / SOMEONE YOU WANT TO HEAR
-            </h3>
-          </div>
-          <div className="event loop1">
-            <h3>
-              15.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
-              / SOMEONE YOU WANT TO HEAR
-            </h3>
-          </div>
-          <div className="event loop1">
-            <h3>
-              16.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
-              / SOMEONE YOU WANT TO HEAR
-            </h3>
-          </div>
-          <div className="event loop1">
-            <h3>
-              17.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
-              / SOMEONE YOU WANT TO HEAR
-            </h3>
-          </div>
-          <div className="event loop2">
-            <h3>
-              18.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
-              / SOMEONE YOU WANT TO HEAR
-            </h3>
-          </div>
-          <div className="event loop2">
-            <h3>
-              19.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
-              / SOMEONE YOU WANT TO HEAR
-            </h3>
-          </div>
-          <div className="event loop2">
-            <h3>
-              20.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
-              / SOMEONE YOU WANT TO HEAR
-            </h3>
-          </div>
-          <div className="event loop2">
-            <h3>
-              21.06 / SOME RANDOM / LINEUP / DJS / ARTISTS / GOOD MUSIC / TECHNO
-              / SOMEONE YOU WANT TO HEAR
-            </h3>
-          </div>
-        </div>
+        {events.length > 0 && (
+          <InfiniteLoop speed="20" direction="reverse">
+            {events.map((event) => (
+              <h3
+                className="events-loop-event contentBlock--one"
+                key={event.date}
+              >
+                {event.date} / {event.artists.split(",").join(" / ")}
+              </h3>
+            ))}
+          </InfiniteLoop>
+        )}
       </div>
     </>
   );
