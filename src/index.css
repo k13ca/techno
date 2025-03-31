@@ -632,20 +632,24 @@ svg {
 /* ---------------------ABOUT---------------------- */
 
 .about {
-  position: relative;
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-direction: row;
+  line-height: normal;
+  box-sizing: border-box;
 }
 
-.about1,
-.about2 {
-  width: 350px;
-  line-height: 100%;
-  text-align: justify;
-  padding-block: 30px;
+.about-column1,
+.about-column2 {
+  min-width: 50%;
+  max-width: 50%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px;
+  box-sizing: border-box;
 }
 
 .hidden-info h4 {
@@ -673,9 +677,261 @@ svg {
   border: solid 2px var(--black);
 }
 
+/* ---------------------ADMIN---------------------- */
+
+.admin-content {
+  box-sizing: border-box;
+  min-height: 80%;
+  max-height: 80%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  gap: 10px;
+}
+
+.admin-options-content {
+  box-sizing: border-box;
+  flex-grow: 1;
+  border: solid 3px var(--black);
+  height: 100%;
+  padding: 30px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+.admin-options-content::-webkit-scrollbar {
+  display: none;
+}
+.add-event-form-group::-webkit-scrollbar {
+  display: none;
+}
+
+.admin-event-block {
+  box-sizing: border-box;
+  border: solid 3px var(--black);
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 0px 0px 20px 0px;
+  transition: 1s;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.admin-event-block-visible {
+  min-height: 50px;
+  gap: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+}
+
+.admin-event-block-hidden {
+  height: max-content;
+}
+
+.admin-event-block:hover {
+  transform: skew(-20deg);
+  transition: 1s;
+}
+
+.admin-event-block button {
+  all: unset;
+  transition: 1s;
+  position: absolute;
+  right: -100%;
+}
+
+.admin-event-block:hover button {
+  transition: 1s;
+  right: 3%;
+}
+
+.add-event-form-group {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-event-button {
+  width: fit-content;
+  height: 70px;
+}
+
+.add-event-form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 20px;
+  justify-content: space-around;
+  align-items: baseline;
+  margin: 20px;
+  height: 70%;
+  overflow: scroll;
+}
+
+.add-event-inputs,
+.add-event-outputs {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap: 10px;
+  max-width: 40%;
+  text-wrap: wrap;
+  word-wrap: break-word;
+  line-height: normal;
+  overflow: hidden;
+}
+
+.add-event-inputs .outline,
+.add-event-outputs .outline {
+  width: fit-content;
+  align-self: center;
+  margin-bottom: 30px;
+  text-wrap: wrap;
+}
+
+.add-artists-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.admin-add-event-undo {
+  all: unset;
+  height: 50px;
+  background-color: var(--black);
+  width: fit-content;
+  color: var(--white);
+  padding: 0 10px;
+  border-radius: 20px;
+}
+
+.active:active {
+  filter: drop-shadow(0px 0px 3px var(--neon));
+}
+
+.admin-event-block button:not(#admin-events-button) {
+  max-width: 40%;
+  text-wrap: wrap;
+  height: auto;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 0 10px;
+  border-radius: 20px;
+}
+
+.admin-reservations {
+  max-width: 50%;
+  text-wrap: wrap;
+}
+
+#remove-reservation-button {
+  text-align: center;
+}
+
+.add-event-success {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) skew(-20deg);
+  animation: modalAnimation 2.1s;
+}
+
+@keyframes modalAnimation {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ---------------------RESPONSIVE---------------------- */
+
 @media (max-width: 1024px) {
   h1 {
     font-size: 60px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .user-input {
+    min-height: 50px;
+    width: auto;
+    font-size: 12px;
+  }
+
+  .add-event-form-group {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    gap: 100px;
+    margin-bottom: 50px;
+    scrollbar-width: 0px;
+  }
+
+  .add-event-form {
+    flex-direction: column;
+
+    width: 100%;
+    gap: 100px;
+    align-items: center;
+    justify-content: baseline;
+    height: auto;
+  }
+
+  .add-event-inputs,
+  .add-event-outputs {
+    width: fit-content;
+    max-width: 70%;
+    height: fit-content;
+  }
+}
+
+@media (max-width: 600px) {
+  .user-input {
+    min-height: 50px;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .add-event-form-group {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    gap: 100px;
+    margin-bottom: 50px;
+    scrollbar-width: 0px;
+  }
+
+  .add-event-form {
+    flex-direction: column;
+    width: max-content;
+    gap: 100px;
+    align-items: center;
+    justify-content: baseline;
+    height: auto;
+    margin: 0;
+  }
+
+  .add-event-inputs,
+  .add-event-outputs {
+    width: fit-content;
+    max-width: 70%;
+    height: fit-content;
   }
 }
 
@@ -807,9 +1063,23 @@ svg {
     max-width: 70%;
     margin: 10px auto;
   }
+
+  #remove-reservation-button {
+    line-height: normal;
+    width: min-content;
+    max-width: 30%;
+  }
+
+  #remove-reservation-button h4 {
+    font-size: 10px;
+  }
 }
 
 @media (max-width: 790px) {
+  #remove-reservation-button {
+    font-size: 10px;
+  }
+
   .techno h1 {
     font-size: 70px;
   }
@@ -850,9 +1120,29 @@ svg {
   .events-list {
     grid-template-columns: 1fr 1fr;
   }
+
+  .looper {
+    min-width: 100%;
+  }
 }
 
 @media (max-width: 635px) {
+  .admin-options-content h2 {
+    font-size: 14px;
+  }
+
+  .admin-options-content h3 {
+    font-size: 12px;
+  }
+
+  .admin-options-content h4 {
+    font-size: 10px;
+  }
+
+  #remove-reservation-button {
+    font-size: 8px;
+  }
+
   .techno h1 {
     font-size: 60px;
   }
@@ -1047,5 +1337,14 @@ svg {
 
   .events-list {
     grid-template-columns: 1fr 1fr;
+  }
+
+  /* ------ADMIN------ */
+}
+
+@media (max-width: 530px) {
+  #admin-menu .outline h3 {
+    font-size: 10px;
+    text-wrap: wrap;
   }
 }

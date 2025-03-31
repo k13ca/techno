@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
+
+//ZEBY SIE NIE DALO WEJSC DO /ADMIN PRZEZ WPISANIE WPRZEGLADARKE
 
 function Login() {
   const [notValid, setNotValid] = useState(false);
@@ -11,15 +13,21 @@ function Login() {
     const username = e.target[0].value;
     const password = e.target[1].value;
     e.preventDefault();
-    const isLogged = ctx.login(username, password);
+    ctx.login(username, password);
 
-    if (!isLogged) {
+    if (!ctx.isLogged) {
       setNotValid(true);
       return;
     }
 
-    navigate("/admin");
+    // navigate("/admin");
   };
+
+  useEffect(() => {
+    if (ctx.isLogged) {
+      navigate("/admin");
+    }
+  }, [ctx.isLogged]);
 
   return (
     <form className="login-form" onSubmit={handleFormSubmit}>

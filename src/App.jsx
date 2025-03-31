@@ -10,6 +10,11 @@ import Section from "./section";
 import ReservationForm from "./pages/reservation-form";
 import { EventsProvider } from "./contexts/EventsContext";
 import { AuthProvider } from "./contexts/AuthContext";
+import {
+  ProtectedRouteAdmin,
+  ProtectedRouteReservation,
+} from "./components/ProtectedRoute";
+
 function App() {
   return (
     <EventsProvider>
@@ -18,6 +23,19 @@ function App() {
           <Route element={<Section />}>
             <Route index element={<Main />} />
             <Route path="about" element={<About />} />
+
+            <Route path="events" element={<Events />} />
+            <Route path="reservation" element={<Reservation />} />
+
+            <Route
+              path="reservation-form"
+              element={
+                <ProtectedRouteReservation>
+                  <ReservationForm />
+                </ProtectedRouteReservation>
+              }
+            />
+
             <Route
               path="login"
               element={
@@ -26,10 +44,16 @@ function App() {
                 </AuthProvider>
               }
             ></Route>
-            <Route path="events" element={<Events />} />
-            <Route path="reservation" element={<Reservation />} />
-            <Route path="reservation-form" element={<ReservationForm />} />
-            <Route path="admin" element={<Admin />} />
+            <Route
+              path="admin"
+              element={
+                <AuthProvider>
+                  <ProtectedRouteAdmin>
+                    <Admin />
+                  </ProtectedRouteAdmin>
+                </AuthProvider>
+              }
+            />
           </Route>
         </Routes>
       </BrowserRouter>

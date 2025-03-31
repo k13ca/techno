@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { API_HOST } from "../consts/const";
 
 const EventsContext = createContext();
 
@@ -8,6 +9,11 @@ function EventsProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [currEvent, setCurrEvent] = useState([]);
   const [reservationInfo, setReservationInfo] = useState([]);
+  const [reservations, setReservations] = useState([]);
+  const [eventToDelete, setEventToDelete] = useState({
+    eventId: "",
+    eventName: "",
+  });
 
   const [reservation, setReservation] = useState({
     seatingname: "",
@@ -15,26 +21,43 @@ function EventsProvider({ children }) {
     date: "",
     pin: "",
   });
+  async function fetchEvents() {
+    const res = await fetch(`${API_HOST}/events`);
+    if (!res.ok) {
+      return "ERROR";
+    }
+    const data = await res.json();
 
-  const API_HOST = import.meta.env.VITE_API_HOST;
+    console.log(data);
+    const pastEvents = sortEventsDate(
+      data.filter((event) => checkPastDate(event.date))
+    );
+    const futureEvents = sortEventsDate(
+      data.filter((event) => !checkPastDate(event.date))
+    );
+    setEvents(futureEvents);
+    setPastEvents(pastEvents);
+  }
   useEffect(() => {
-    async function fetchEvents() {
-      const res = await fetch(`${API_HOST}/events`);
+    fetchEvents();
+  }, []);
+
+  useEffect(() => {
+    async function fetchReservations() {
+      const res = await fetch(`${API_HOST}/reservations`);
       if (!res.ok) {
         return "ERROR";
       }
       const data = await res.json();
-
-      const pastEvents = sortEventsDate(
-        data.filter((event) => checkPastDate(event.date))
+      console.log(data);
+      const upToDateReservations = sortEventsDate(
+        data.filter((reservation) => !checkPastDate(reservation.date))
       );
-      const futureEvents = sortEventsDate(
-        data.filter((event) => !checkPastDate(event.date))
-      );
-      setEvents(futureEvents);
-      setPastEvents(pastEvents);
+      console.log(upToDateReservations);
+      setReservations(upToDateReservations);
+      console.log(reservations);
     }
-    fetchEvents();
+    fetchReservations();
   }, []);
 
   useEffect(() => {
@@ -72,6 +95,7 @@ function EventsProvider({ children }) {
           `${API_HOST}/reservations/${currEvent.eventid}`
         );
         const data = await res.json();
+        console.log("reservation", data);
         setReservationInfo(data);
       } catch {
         console.log("error");
@@ -94,6 +118,10 @@ function EventsProvider({ children }) {
         setReservationInfo,
         reservation,
         setReservation,
+        eventToDelete,
+        setEventToDelete,
+        reservations,
+        fetchEvents,
       }}
     >
       {children}

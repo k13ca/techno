@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 const AuthContext = createContext();
 
@@ -8,15 +8,19 @@ const ADMIN = {
 };
 
 function AuthProvider({ children }) {
+  const [isLogged, setIsLogged] = useState(false);
+
   function login(username, password) {
     if (username === ADMIN.username && password === ADMIN.password) {
-      return true;
+      return setIsLogged(true);
     }
-    return false;
+    return setIsLogged(false);
   }
 
   return (
-    <AuthContext.Provider value={{ login }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ login, isLogged }}>
+      {children}
+    </AuthContext.Provider>
   );
 }
 

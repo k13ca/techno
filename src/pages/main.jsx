@@ -3,12 +3,15 @@ import techno from "../assets/techno.png";
 import arrow from "../assets/arrow.png";
 import { NavLink } from "react-router-dom";
 import InfiniteLoop from "../components/InfinityLoop";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { EventsContext } from "../contexts/EventsContext";
+import useDiagonalLine from "../functions/diagonalLine";
 
 function Main() {
-  const { events } = useContext(EventsContext);
-  console.log(events);
+  const { events, pastEvents } = useContext(EventsContext);
+  const loopEventRef = useRef(null);
+  const loopDiagonalLine = useDiagonalLine(loopEventRef, events);
+
   return (
     <>
       {/* --------------HEADER----------------  */}
@@ -52,10 +55,26 @@ function Main() {
         </h2>
         {events.length > 0 && (
           <InfiniteLoop speed="20" direction="reverse">
+            {pastEvents.slice(-3).map((event) => (
+              <div
+                className="events-loop-event contentBlock--one"
+                key={event.eventid}
+                ref={loopEventRef}
+                style={{ position: "relative" }}
+              >
+                <div
+                  className="cross-line"
+                  style={{ ...loopDiagonalLine }}
+                ></div>
+                <h3 style={{ opacity: "50%" }}>
+                  {event.date} / {event.artists.split(",").join(" / ")}
+                </h3>
+              </div>
+            ))}
             {events.map((event) => (
               <h3
                 className="events-loop-event contentBlock--one"
-                key={event.date}
+                key={event.eventid}
               >
                 {event.date} / {event.artists.split(",").join(" / ")}
               </h3>

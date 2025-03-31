@@ -11,17 +11,18 @@ function Events() {
           <EventItem
             crossLineClass={"cross-line"}
             expired={"expired"}
-            key={event.id}
+            key={event.eventid}
             title={event.eventname}
             date={event.date}
             artists={event.artists}
             borderStyle={{ border: "3px solid rgba(0,0,0, 0.4)" }}
+            awaitedElement={event}
           />
         ))}
         {events.map((event) => (
           <EventItem
             crossLineClass={"hide"}
-            key={event.id}
+            key={event.eventid}
             title={event.eventname}
             date={event.date}
             artists={event.artists}

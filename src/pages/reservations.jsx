@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import arrowLeft from "../assets/arrow_left.png";
 import arrowRight from "../assets/arrow_right.png";
+
 import {
   Box1,
   Box2,
@@ -38,6 +39,7 @@ import {
 import "../index.css";
 import { EventsContext } from "../contexts/EventsContext";
 import { useNavigate } from "react-router-dom";
+import { API_HOST } from "../consts/const";
 
 function Reservation() {
   const [switchFlor, setSwitchFlor] = useState(true);
@@ -45,7 +47,7 @@ function Reservation() {
   const [isReserved, setIsReserved] = useState(false);
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
   const [eventIndex, setEventIndex] = useState(0);
-  // const [reservedSeatingsModal, setReservedSeatingsModal] = useState(false);
+
   const {
     events,
     currEvent,
@@ -92,10 +94,11 @@ function Reservation() {
   function generatePin() {
     let pin;
     do {
-      pin = Math.floor(Math.random() * (9999 - 1000)) + 1;
+      pin = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
     } while (pins.includes(pin));
     setReservation({ ...reservation, pin: `${pin}` });
     console.log(pin);
+    return pin;
   }
 
   // ----------MODAL-POSITION----------
@@ -121,12 +124,6 @@ function Reservation() {
     if (eventIndex > 0) setEventIndex((current) => current - 1);
   }
 
-  const reservedSeatings = reservationInfo
-    .map((reservation) => reservation.seatingname)
-    .map((seating) => document.getElementById(seating))
-    .filter((seatingHTML) => seatingHTML != null);
-  console.log(reservedSeatings);
-
   // ----------MAP-TITLE----------
 
   useEffect(() => {
@@ -137,6 +134,11 @@ function Reservation() {
     }
 
     // ----------RESERVED-SEATINGS----------
+
+    const reservedSeatings = reservationInfo
+      .map((reservation) => reservation.seatingname)
+      .map((seating) => document.getElementById(seating))
+      .filter((seatingHTML) => seatingHTML != null);
 
     reservedSeatings.forEach((seating) => {
       seating.classList.remove(`${reservationAvailableStyle}`);
@@ -173,11 +175,24 @@ function Reservation() {
     });
   }
 
+  // ----------DATABASE POST----------
+
+  async function postToDatabase(pin) {
+    await fetch(`${API_HOST}/create-reservation`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...reservation, pin }),
+    });
+  }
+
+  // ----------MODAL CLICK FUNCTION----------
+
   function handleModalClick() {
     if (isReserved) {
       return;
     }
-    generatePin();
+    const pin = generatePin();
+    postToDatabase(pin);
     navigate("/reservation-form");
   }
 
@@ -204,9 +219,7 @@ function Reservation() {
           className="arrows pointer"
         />
         <div>
-          <h1>
-            {currEvent?.date} {currEvent?.eventname}
-          </h1>
+          <h1>{currEvent?.eventname}</h1>
         </div>
         <img
           src={arrowRight}
