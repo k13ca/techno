@@ -1,0 +1,26 @@
+.login-form {
+  height: 100%;
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(245, 245, 245, 1) 0%,
+    rgba(191, 231, 250, 0) 30%,
+    rgba(191, 231, 250, 0) 100%
+  );
+}
+
+.alert {
+  min-height: 50px;
+  text-align: center;
+  line-height: 100%;
+}
+
+.login-form .outline {
+  padding-block: 5px;
+  width: 100px;
+}

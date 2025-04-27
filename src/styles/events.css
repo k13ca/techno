@@ -1,0 +1,54 @@
+.events-list {
+  padding-top: 50px;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+  row-gap: 50px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.events-list h2:hover {
+  animation: none;
+}
+
+.event-item {
+  width: auto;
+  height: 100%;
+  padding-inline: 30px;
+  text-transform: uppercase;
+  display: inline-block;
+  position: relative;
+  margin: 0;
+}
+
+.event-item-artists {
+  height: auto;
+  width: auto;
+  align-self: center;
+  text-align: justify;
+  text-align-last: justify;
+  line-height: 100%;
+  word-spacing: 20px;
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 425px) {
+  .event-item {
+    min-height: 400px;
+    height: fit-content;
+  }
+
+  .events-list h2 {
+    font-size: 5vh;
+  }
+
+  .events-list h3 {
+    font-size: 3vh;
+    line-height: 100%;
+  }
+}

@@ -59,8 +59,6 @@ function Reservation() {
 
   const navigate = useNavigate();
 
-  console.log("reservation page", reservation);
-
   const position = useRef(null);
 
   const reservationAvailabilityStyle = "seating";
@@ -97,7 +95,6 @@ function Reservation() {
       pin = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
     } while (pins.includes(pin));
     setReservation({ ...reservation, pin: `${pin}` });
-    console.log(pin);
     return pin;
   }
 
@@ -232,7 +229,11 @@ function Reservation() {
         {/* ------------1FLOR---------------- */}
 
         {switchFlor ? (
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1073.61 688">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1073.61 688"
+            className="rotate-flor"
+          >
             <Flor1 />
             <g id="seatings">
               <Box1
@@ -294,7 +295,11 @@ function Reservation() {
             </g>
           </svg>
         ) : (
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1073 688">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1073 688"
+            className="rotate-flor"
+          >
             <Flor2 />
             <g id="seatings">
               <Table6
@@ -365,7 +370,7 @@ function Reservation() {
           </svg>
         )}
 
-        <div className="" style={{ writingMode: "vertical-lr" }}>
+        <div className="flors-menu">
           <h2
             className={!switchFlor ? "pointer focus" : "pointer"}
             onClick={() => setSwitchFlor(false)}

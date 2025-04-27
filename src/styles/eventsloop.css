@@ -1,0 +1,70 @@
+.events-loop {
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  max-width: 63%;
+  height: 100%;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.events-loop-event {
+  cursor: pointer;
+  height: 90%;
+  min-width: 300px;
+  max-width: 300px;
+  text-align: justify;
+  text-align-last: justify;
+  line-height: 100%;
+  word-spacing: 20px;
+  margin-right: 30px;
+  width: fit-content;
+  text-transform: uppercase;
+}
+
+@keyframes slideAnim {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.looper {
+  /* width: 100%;
+    overflow: hidden; */
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  max-width: 63%;
+  height: 100%;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.looper__innerList {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  height: 100%;
+}
+
+.looper__innerList[data-animate="true"] .looper__listInstance {
+  animation: slideAnim linear infinite;
+}
+
+.looper__listInstance {
+  display: flex;
+  width: max-content;
+  animation: none;
+}
+
+@media (max-width: 768px) {
+  .events-loop-event {
+    min-width: 220px;
+    max-width: 220px;
+  }
+}

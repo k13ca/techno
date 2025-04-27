@@ -13,9 +13,8 @@ function ReservationForm() {
 
   const navigate = useNavigate();
 
-  const { reservation, setReservation } = useContext(EventsContext);
-
-  console.log("reservation form", reservation);
+  const { reservation, setReservation, fetchReservations } =
+    useContext(EventsContext);
 
   useEffect(() => {
     function handleTimeout() {
@@ -39,22 +38,10 @@ function ReservationForm() {
     return () => clearInterval(timer);
   }, [confirmationModal, countDown, navigate]);
 
-  useEffect(() => {
-    // tutaj uzyc session storage
-    // const sessionToken = sessionStorage.getItem("sessionToken");
-    // console.log(sessionToken);
-    // if (!sessionToken) {
-    //   sessionStorage.setItem("sessionToken", "wartosc");
-    //   navigate("/reservation");
-    // }
-
-    return () => console.log("usuwam sie");
-  }, []);
-
   // ----------DATABASE POST 2----------
 
   async function finalPostToDatabase() {
-    await fetch(`${API_HOST}/update-reservation`, {
+    return await fetch(`${API_HOST}/update-reservation`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(reservation),
@@ -69,35 +56,49 @@ function ReservationForm() {
     });
   }
 
+  async function sendEmail(reservation) {
+    await fetch(`${API_HOST}/send-mail`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(reservation),
+    });
+  }
+
   const handleReserveButton = (e) => {
     e.preventDefault();
     setConfirmationModal(true);
-    setCountDown(15);
+    setCountDown(180);
 
     const fullname = e.target[0].value;
     const email = e.target[1].value;
 
-    setReservation({
+    const fullReservation = {
       ...reservation,
       fullname: `${fullname}`,
       email: `${email}`,
-    });
+    };
+
+    sendEmail(fullReservation);
+
+    setReservation(fullReservation);
   };
 
   function handleExitButton() {
     setConfirmationModal(false);
     setIncorrectPin(false);
-    //set time to primary
-    //delete code from database
   }
 
-  function handleConfirmButton(e) {
+  async function handleConfirmButton(e) {
     const pin = e.target[0].value;
     e.preventDefault();
     if (reservation.pin === pin) {
       setConfirmationModal(false);
-      finalPostToDatabase();
       setIncorrectPin(false);
+      const response = await finalPostToDatabase();
+      if (response.ok) {
+        fetchReservations();
+        navigate("/reservation");
+      }
     }
     setIncorrectPin(true);
   }
@@ -107,11 +108,6 @@ function ReservationForm() {
     setIncorrectPin(false);
     navigate("/reservation");
   }
-
-  //10 min timer whole page
-  //when on page reservation added
-  //when 10 min gone remove reservstion
-  //
 
   return (
     <>

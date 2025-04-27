@@ -3,15 +3,41 @@ import techno from "../assets/techno.png";
 import arrow from "../assets/arrow.png";
 import { NavLink } from "react-router-dom";
 import InfiniteLoop from "../components/InfinityLoop";
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { EventsContext } from "../contexts/EventsContext";
 import useDiagonalLine from "../functions/diagonalLine";
 
 function Main() {
   const { events, pastEvents } = useContext(EventsContext);
   const loopEventRef = useRef(null);
+  const containerRef = useRef(null);
+  const textRef = useRef(null);
   const loopDiagonalLine = useDiagonalLine(loopEventRef, events);
 
+  const fitText = () => {
+    if (window.screen.width <= 600) {
+      textRef.current.style.fontSize = `1.2vh`;
+      return;
+    }
+    const container = containerRef.current;
+    const text = textRef.current;
+
+    if (!container || !text) return;
+
+    let currentSize = 50;
+    text.style.fontSize = `${currentSize}px`;
+
+    while (text.scrollHeight > container.clientHeight && currentSize > 10) {
+      currentSize -= 1;
+      text.style.fontSize = `${currentSize}px`;
+    }
+  };
+
+  useEffect(() => {
+    fitText();
+    window.addEventListener("resize", fitText);
+    return () => window.removeEventListener("resize", fitText);
+  }, []);
   return (
     <>
       {/* --------------HEADER----------------  */}
@@ -47,8 +73,8 @@ function Main() {
 
       {/* --------------BOTTOM-------------------  */}
 
-      <div className="bottom">
-        <h2 className="bottomquote">
+      <div ref={containerRef} className="bottom">
+        <h2 ref={textRef} className="bottomquote">
           Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
           dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
           proident, sunt in culpa qui officia deserunt mollit anim id est.
@@ -66,7 +92,7 @@ function Main() {
                   className="cross-line"
                   style={{ ...loopDiagonalLine }}
                 ></div>
-                <h3 style={{ opacity: "50%" }}>
+                <h3 style={{ opacity: "50%", lineHeight: "100%" }}>
                   {event.date} / {event.artists.split(",").join(" / ")}
                 </h3>
               </div>

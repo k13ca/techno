@@ -28,7 +28,6 @@ function EventsProvider({ children }) {
     }
     const data = await res.json();
 
-    console.log(data);
     const pastEvents = sortEventsDate(
       data.filter((event) => checkPastDate(event.date))
     );
@@ -42,28 +41,21 @@ function EventsProvider({ children }) {
     fetchEvents();
   }, []);
 
-  useEffect(() => {
-    async function fetchReservations() {
-      const res = await fetch(`${API_HOST}/reservations`);
-      if (!res.ok) {
-        return "ERROR";
-      }
-      const data = await res.json();
-      console.log(data);
-      const upToDateReservations = sortEventsDate(
-        data.filter((reservation) => !checkPastDate(reservation.date))
-      );
-      console.log(upToDateReservations);
-      setReservations(upToDateReservations);
-      console.log(reservations);
+  async function fetchReservations() {
+    const res = await fetch(`${API_HOST}/reservations`);
+    if (!res.ok) {
+      return "ERROR";
     }
-    fetchReservations();
-  }, []);
+    const data = await res.json();
+    const upToDateReservations = sortEventsDate(
+      data.filter((reservation) => !checkPastDate(reservation.date))
+    );
+    setReservations(upToDateReservations);
+  }
 
   useEffect(() => {
-    // console.log("pastevents", events);
-    // console.log("pastevents", pastEvents);
-  }, [events]);
+    fetchReservations();
+  }, []);
 
   const convertDate = (date) => {
     const eventDate = date.split(".").join("-");
@@ -85,7 +77,7 @@ function EventsProvider({ children }) {
   };
 
   useEffect(() => {
-    async function fetchReservations() {
+    async function fetchReservation() {
       if (!currEvent.eventid) {
         return;
       }
@@ -95,7 +87,6 @@ function EventsProvider({ children }) {
           `${API_HOST}/reservations/${currEvent.eventid}`
         );
         const data = await res.json();
-        console.log("reservation", data);
         setReservationInfo(data);
       } catch {
         console.log("error");
@@ -103,7 +94,7 @@ function EventsProvider({ children }) {
         setIsLoading(false);
       }
     }
-    fetchReservations();
+    fetchReservation();
   }, [currEvent]);
 
   return (
@@ -122,6 +113,7 @@ function EventsProvider({ children }) {
         setEventToDelete,
         reservations,
         fetchEvents,
+        fetchReservations,
       }}
     >
       {children}

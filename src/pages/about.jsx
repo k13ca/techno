@@ -11,6 +11,7 @@ function About() {
     <>
       <div className="about">
         <div className="about-column1">
+          <h2>(some parts are still in progress)</h2>
           <h2>
             Welcome to my random project generator idea website of techno club
             in katowice.
@@ -21,9 +22,9 @@ function About() {
             can also be a customer just as an owner.
           </h2>
           <div>
-            <h4>
+            <h4 style={{ marginBottom: "50px" }}>
               to get access to the admin panel, use login and password which are
-              hidden below
+              hidden below:
             </h4>
             <div
               className={`hidden-info ${revealed.div1 ? "revealed" : "hidden"}`}
@@ -44,7 +45,12 @@ function About() {
             as a client you can use <u>make reservation</u> function to reserve
             seatings for chosen events
           </h3>
-          <h2>(some parts are still in progress)</h2>
+
+          <h2>
+            Everynight at 00:00 all data is reset to its initial state. Anyone
+            who visits the site can add their own events, create reservations
+            and manage them during the day.
+          </h2>
         </div>
       </div>
     </>

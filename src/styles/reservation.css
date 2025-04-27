@@ -1,0 +1,104 @@
+.flors {
+  display: flex;
+  flex-direction: row;
+  max-height: 80%;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.flors-menu {
+  writing-mode: vertical-lr;
+}
+
+svg {
+  max-height: 90%;
+}
+
+.focus {
+  filter: drop-shadow(0px 0px 3px var(--neon));
+}
+
+.arrows {
+  height: 90px;
+  width: 120px;
+  padding-block: 30px;
+}
+
+.seating {
+  cursor: pointer;
+  z-index: 3;
+}
+
+.seating:hover {
+  cursor: pointer;
+  filter: drop-shadow(0px 0px 3px var(--neon));
+}
+
+.seating .cls-1 {
+  fill: rgb(255, 255, 255, 0.5);
+}
+
+.cls-1 {
+  fill: none;
+  stroke: #000;
+  stroke-miterlimit: 10;
+}
+
+.reservation {
+  z-index: 4;
+  position: absolute;
+  width: 300px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255, 0.5);
+  text-align: center;
+  line-height: 100%;
+  text-wrap: wrap;
+}
+
+.reservation h1 {
+  line-height: 100%;
+  text-wrap: wrap;
+}
+
+.available {
+  filter: drop-shadow(0px 0px 3px var(--neon));
+  cursor: pointer;
+}
+
+.reserved {
+  filter: drop-shadow(0px 0px 3px var(--neonred));
+}
+
+.seating .reserved:hover {
+  cursor: pointer;
+  filter: none;
+}
+
+@media (max-width: 768px) {
+  .arrows {
+    height: auto;
+    width: 10vw;
+    padding-block: 30px;
+  }
+
+  .flors {
+    position: relative;
+    flex-direction: column-reverse;
+    justify-items: end;
+    min-height: 80%;
+    overflow-x: scroll;
+  }
+
+  .flors-menu {
+    writing-mode: unset;
+    display: flex;
+    gap: 30px;
+  }
+
+  .rotate-flor {
+    width: 150%;
+  }
+}

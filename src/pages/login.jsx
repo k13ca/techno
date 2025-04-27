@@ -35,7 +35,13 @@ function Login() {
         LOGIN TO <br />
         ADMIN PANEL
       </h2>
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <input
           onChange={() => setNotValid(false)}
           type="text"

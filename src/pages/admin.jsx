@@ -9,6 +9,7 @@ function Admin() {
   const { events, pastEvents, eventToDelete, reservations, fetchEvents } =
     useContext(EventsContext);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+
   const [showAddEventnModal, setShowAddEventnModal] = useState(false);
   const [optionViews, setOptionView] = useState({
     showEvents: false,
@@ -272,24 +273,26 @@ function Admin() {
                       name="artist"
                       ref={artistref}
                     ></input>
-                    <button
-                      style={{ all: "unset" }}
-                      className="pointer active"
-                      onClick={submitArtist}
-                      type="button"
-                    >
-                      <AiFillPlusSquare
-                        size="60px"
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <button
+                        style={{ all: "unset" }}
                         className="pointer active"
-                      />
-                    </button>
-                    <button
-                      className="admin-add-event-undo pointer active"
-                      onClick={undoArtist}
-                      type="button"
-                    >
-                      <h4>undo</h4>
-                    </button>
+                        onClick={submitArtist}
+                        type="button"
+                      >
+                        <AiFillPlusSquare
+                          size="60px"
+                          className="pointer active"
+                        />
+                      </button>
+                      <button
+                        className="admin-add-event-undo pointer active"
+                        onClick={undoArtist}
+                        type="button"
+                      >
+                        <h4>undo</h4>
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <div className="add-event-outputs">
@@ -333,7 +336,9 @@ function Admin() {
           <div className="admin-options-content">
             {reservations.map((reservation) => (
               <AdminShowReservations
+                pin={reservation.pin}
                 key={reservation.id}
+                reservationId={reservation.id}
                 eventName={reservation.eventname}
                 date={reservation.date}
                 person={reservation.fullname || "empty"}
